@@ -1,2 +1,2 @@
-# task-management-project
+# Task Management Project
 Task Management Project
