@@ -25,9 +25,6 @@ SECRET_KEY = "django-insecure-b!i2=&kguqd9w)1=%f$s1mmrkh=ac8f39a4i$(g17qa(%$ofap
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -127,3 +124,23 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
+# CSRF_TRUSTED_ORIGINS = [
+#    "https://organic-lamp-9v9r74vrrrpf7v96-8000.app.github.dev"
+#]
+
+# HTTP_HOST = [
+#   
+#]
+
+CSRF_TRUSTED_ORIGINS = ["https://*.github.dev"]
+CSRF_COOKIE_SECURE = False  
+CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_SAMESITE = None 
+CSRF_USE_SESSIONS = False
+
+MIDDLEWARE += [
+    'django.middleware.security.SecurityMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+]
+
+LOGIN_REDIRECT_URL = "tasks:list-tasks"
