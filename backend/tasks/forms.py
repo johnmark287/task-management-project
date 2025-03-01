@@ -1,5 +1,8 @@
 from django import forms
+from tasks.models import Task
 
-class TaskForm(forms.Form):
-    title = forms.CharField(max_length=200)
-    description = forms.CharField(max_length=200, widget=forms.Textarea())
+class TaskForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ("title", "description", "priority", "due_date", "status")
+

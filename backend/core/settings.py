@@ -35,6 +35,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    "crispy_forms",
+    "crispy_tailwind",
+
     "users",
     "tasks",
 ]
@@ -143,4 +146,5 @@ MIDDLEWARE += [
     'django.middleware.csrf.CsrfViewMiddleware',
 ]
 
-LOGIN_REDIRECT_URL = "tasks:list-tasks"
+LOGIN_REDIRECT_URL = "/accounts/login/"
+

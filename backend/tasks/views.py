@@ -5,39 +5,36 @@ from .models import Task
 from .serializers import TaskSerializer
 from .forms import TaskForm
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 
-class TaskViewSet(viewsets.ModelViewSet):
-    serializer_class = TaskSerializer
-    permission_classes = [IsAuthenticated]
+# class TaskViewSet(viewsets.ModelViewSet):
+#    serializer_class = TaskSerializer
+#    permission_classes = [IsAuthenticated]
+#
+#    def get_queryset(self):
+#        return Task.objects.filter(user=self.request.user)
+#
+#    def perform_create(self, serializer):
+#        serializer.save(user=self.request.user)
 
-    def get_queryset(self):
-        return Task.objects.filter(user=self.request.user)
-
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
-
-def create_view(request):
+@login_required
+def create_task(request):
     if request.method == "POST":
+        print(f"††††††††††††††††")
         form = TaskForm(request.POST)
         if form.is_valid():
-            title = form.cleaned_data['title']
-            description = form.cleaned_data['description']
-            task = Task.objects.create(title=title, description=description)
+            task = form.save(commit=False)
+            task.user = request.user
             task.save()
-            return redirect("task-list")
-        
-        context = {
-                "form": form,
-        }
-        return render(request, 'create_task.html', context)
+            print(f"†††††††† {task} ††††††††")
+            return redirect(reverse("tasks:list-tasks"))
     if request.method == "GET":
+        print(f"††††††††  ††††††††")
         form = TaskForm()
-        context = {
-            "form": form,
-        }
-    return render(request, 'task_list.html', context)
+    return render(request, 'create_task.html', { "form": form })
 
+@login_required
 def list_tasks(request):
-     tasks = Task.objects.all()
-     print(tasks)
+     tasks = Task.objects.filter(user=request.user)
      return render(request, "list_tasks.html", { "tasks": tasks })
