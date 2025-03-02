@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate, get_user_model
 from django.views.decorators.csrf import csrf_exempt
 from . import forms
 from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
 #from django.urls import reverse
 User = get_user_model()
 
@@ -18,6 +19,16 @@ def signup(request):
     else:
         form = forms.CustomUserCreationForm()
     return render(request, "registration/signup.html", {"form": form})
+
+def login(request):
+    if request.method == "POST":
+        form = AuthenticationForm()
+        if form.is_valid():
+            form.save()
+            return redirect("tasks:list-tasks")
+    else:
+        form = AuthenticationForm()
+    return render(request, "registration/login.html", { "form": form })
 
 def list_users(request):
     users = User.objects.all()

@@ -146,5 +146,13 @@ MIDDLEWARE += [
     'django.middleware.csrf.CsrfViewMiddleware',
 ]
 
-LOGIN_REDIRECT_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/tasks/"
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'johnmarkmuhando23@gmail.com'
+EMAIL_HOST_PASSWORD = 'Johnmark@2024' #or your normal password if less secure apps is enabled.
+DEFAULT_FROM_EMAIL = 'johnmarkmuhando23@gmail.com'
 
