@@ -1,12 +1,17 @@
 {% extends '../base.html' %}
 {% block title %}Detail{% endblock %}
-{% block header %}Detail{% endblock %}
+{% block header %}{{ task.title }} Detail{% endblock %}
 {% block content %}
 <div>
-  <p><{{ task.title }}</p>
-  <p>{{ task.description }}</p>
-  <p>{{ task.priority }}</p>
-  <p>{{ task.due_date }}</p>
-  <p>{{ task.status }}</p>
+  <hr>
+  <p><strong>Title: </strong>{{ task.title }}</p>
+  <p><strong>Description: </strong>{{ task.description }}</p>
+  <p><strong>Priority: </strong>{{ task.priority }}</p>
+  <p><strong>Due Date: </strong>{{ task.due_date }}</p>
+  <p><strong>Status: </strong>{{ task.status }}</p>
+  
+  <button>
+    <a href="{% url 'tasks:list-tasks' %}">Home Page</a>
+  </button>
 </div>
 {% endblock %}
