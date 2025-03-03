@@ -1,0 +1,10 @@
+{% extends '../base.html' %}
+{% block title %}New Task{% endblock %}
+{% block content %}
+{% block header %}Create a New Task{% endblock %}
+	<form action="{% url 'tasks:create-task' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends '../base.html' %}
+{% block title %}List{% endblock %}
+{% block header %}List{% endblock %}
+{% block content %}
+{% for task in tasks %}
+	<p>
+	  <span><strong>Title: </strong><a href="{% url 'tasks:task-detail' task.pk %}" >{{ task.title }}</a></span>
+	  <button type="submit">
+	    <a href="{% url 'tasks:delete-task' task.pk %} ">Delete Task</a>
+	  </button>
+	  <button type="submit">
+	    <a href="{% url 'tasks:update-task' task.pk %} ">Update Task</a>
+	  </button>
+	</p>
+{% endfor %}
+	        
+<a href="{% url 'tasks:create-task' %}" >
+  <button type="text">Create Task</button>
+</a>
+{% endblock %}

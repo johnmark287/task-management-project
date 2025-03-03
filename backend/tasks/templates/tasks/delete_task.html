@@ -1,0 +1,11 @@
+{% extends '../base.html' %}
+{% block title %}Detail{% endblock %}
+{% block header %}Detail{% endblock %}
+{% block content %}
+<div>
+  <p><strong>{{ task.title }}</strong> has been deleted successfully.</p>
+  <button>
+    <a href="{% url 'tasks:list-tasks' %}">Home Page</a>
+  </button>
+</div>
+{% endblock %}
