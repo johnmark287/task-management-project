@@ -2,6 +2,13 @@
 {% block title %}List{% endblock %}
 {% block header %}List{% endblock %}
 {% block content %}
+{% if user.is_authenticated %}
+      <button>
+        <a href="{% url 'users:logout' %}">Logout - {{ user.email }}</a>
+      </button>
+  {% else %}
+  <p>Please <a href="{% url 'users:login' %}">Login</a></p>
+{% endif %}
 {% for task in tasks %}
 	<p>
 	  <span><strong>Title: </strong><a href="{% url 'tasks:task-detail' task.pk %}" >{{ task.title }}</a></span>

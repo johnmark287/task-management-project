@@ -4,7 +4,7 @@
 from .models import Task
 from .serializers import TaskSerializer
 from .forms import TaskForm
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.contrib import messages
@@ -18,6 +18,10 @@ from django.contrib import messages
 #
 #    def perform_create(self, serializer):
 #        serializer.save(user=self.request.user)
+
+def index(request):
+  tasks = get_list_or_404(Task, user=request.user)
+  return render(request, 'tasks/index.html', { "tasks": tasks })
 
 @login_required(login_url="/users/login/")
 def create_task(request):
@@ -34,7 +38,7 @@ def create_task(request):
 
 @login_required(login_url="/users/login/")
 def list_tasks(request):
-     tasks = Task.objects.all()
+     tasks = get_list_or_404(Task, user=request.user)
      return render(request, "tasks/list_tasks.html", { "tasks": tasks })
 @login_required(login_url="/users/login")
 def task_detail(request, pk):
@@ -43,7 +47,7 @@ def task_detail(request, pk):
   
 @login_required(login_url="/users/login/")
 def delete_task(request, pk):
-  task = get_object_or_404()
+  task = get_object_or_404(Task, pk=pk)
   task.delete()
   return render(request, "tasks/delete_task.html", { "task": task })
 

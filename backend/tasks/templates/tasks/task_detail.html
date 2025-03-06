@@ -11,7 +11,10 @@
   <p><strong>Status: </strong>{{ task.status }}</p>
   
   <button>
-    <a href="{% url 'tasks:list-tasks' %}">Home Page</a>
+    <a href="{% url 'tasks:list-tasks' %}">Go to Home Page</a>
+  </button>
+  <button>
+    <a href="{% url 'tasks:update-task' task.pk %}">Edit {{ task.title }}</a>
   </button>
 </div>
 {% endblock %}

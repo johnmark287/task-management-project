@@ -1,0 +1,15 @@
+{% extends '../base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block header %}Home Page{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<p>Welcome - {{ user }}</p>
+<p>Would you like to view <a href="{% url 'tasks:create-task' %}">Create a New Task?</a></p>
+{% else %}
+<p>Welcome - {{ user }}</p>
+<p>Please <a href="{% url 'users:login' %}">Login</a></p>
+{% endif %}
+{% endblock %}

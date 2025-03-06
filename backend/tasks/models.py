@@ -31,12 +31,15 @@ class Task(models.Model):
             choices=STATUS_CHOICES, 
             default='TODO'
         )
-                                                                                                                                                            
+                                         
     user = models.ForeignKey(
             settings.AUTH_USER_MODEL, 
             on_delete=models.CASCADE,
             related_name='tasks'
         )
-
+        
+    class Meta:
+      ordering = ['-created_at']
+    
     def __str__(self):
         return self.title
