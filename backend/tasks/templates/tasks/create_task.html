@@ -1,10 +1,15 @@
 {% extends '../base.html' %}
+{% load crispy_forms_tags %}
 {% block title %}New Task{% endblock %}
-{% block content %}
 {% block header %}Create a New Task{% endblock %}
-	<form action="{% url 'tasks:create-task' %}" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
+{% block content %}
+    <div class="max-w-md mx-auto mt-10 bg-white p-8 rounded-lg shadow-md">
+        <form action="{% url 'tasks:create-task' %}" method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition-colors duration-300 mt-4">
+                Submit
+            </button>
+        </form>
+    </div>
 {% endblock %}

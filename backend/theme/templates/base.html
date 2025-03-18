@@ -1,4 +1,5 @@
 {% load static tailwind_tags %}
+{% load django_browser_reload %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -7,6 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		{% tailwind_css %}
+    {% django_browser_reload_script %}
 	</head>
 
 	<body class="bg-gray-50 font-serif leading-normal tracking-normal">

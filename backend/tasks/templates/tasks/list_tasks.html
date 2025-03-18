@@ -2,26 +2,25 @@
 {% block title %}List{% endblock %}
 {% block header %}List{% endblock %}
 {% block content %}
-{% if user.is_authenticated %}
-      <button>
-        <a href="{% url 'users:logout' %}">Logout - {{ user.email }}</a>
-      </button>
-  {% else %}
-  <p>Please <a href="{% url 'users:login' %}">Login</a></p>
-{% endif %}
+
+<div class="my-[5px] bg-red">
 {% for task in tasks %}
-	<p>
-	  <span><strong>Title: </strong><a href="{% url 'tasks:task-detail' task.pk %}" >{{ task.title }}</a></span>
-	  <button type="submit">
-	    <a href="{% url 'tasks:delete-task' task.pk %} ">Delete Task</a>
+	<div class="flex justify-between items-center">
+	  <div><a href="{% url 'tasks:task-detail' task.pk %}" >{{ task.title }}</a>
+	  </div>
+	  <div class="flex gap-2">
+	  <button type="submit" class="w-full bg-red-500 hover:bg-blue-600 text-white font-medium py-[1px] px-4 rounded-md transition-colors duration-300 mt-4">
+	    <a href="{% url 'tasks:delete-task' task.pk %} "class="text-sm">Delete Task</a>
 	  </button>
-	  <button type="submit">
-	    <a href="{% url 'tasks:update-task' task.pk %} ">Update Task</a>
+	  <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-[1px] px-4 rounded-md transition-colors duration-300 mt-4">
+	    <a href="{% url 'tasks:update-task' task.pk %} "class="text-sm">Update Task</a>
 	  </button>
-	</p>
+	  </div>
+	</div>
 {% endfor %}
+</div>
 	        
-<a href="{% url 'tasks:create-task' %}" >
-  <button type="text">Create Task</button>
+<a href="{% url 'tasks:create-task' %}" class="my-[5px]">
+  <button type="text" class="rounded-xl">Create Task</button>
 </a>
 {% endblock %}

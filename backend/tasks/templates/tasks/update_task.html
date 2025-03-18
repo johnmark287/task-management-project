@@ -1,10 +1,12 @@
 {% extends '../base.html' %}
+{% load crispy_forms_tags %}
+
 {% block title %}Update Task{% endblock %}
-{% block content %}
 {% block header %}Update Task{% endblock %}
+{% block content %}
 	<form action="{% url 'tasks:update-task' task.pk %}" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
+        {{ form|crispy }}
+        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition-colors duration-300 mt-4">Submit</button>
     </form>
 {% endblock %}

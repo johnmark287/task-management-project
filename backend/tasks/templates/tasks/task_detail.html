@@ -9,12 +9,9 @@
   <p><strong>Priority: </strong>{{ task.priority }}</p>
   <p><strong>Due Date: </strong>{{ task.due_date }}</p>
   <p><strong>Status: </strong>{{ task.status }}</p>
-  
-  <button>
-    <a href="{% url 'tasks:list-tasks' %}">Go to Home Page</a>
-  </button>
-  <button>
-    <a href="{% url 'tasks:update-task' task.pk %}">Edit {{ task.title }}</a>
-  </button>
+  <div class="flex flex-col">
+    <a href="{% url 'tasks:list-tasks' %}" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition-colors duration-300 mt-4 text-center">Go to Home Page</a>
+    <a href="{% url 'tasks:update-task' task.pk %}" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition-colors duration-300 mt-4 text-center">Edit {{ task.title }}</a>
+  </div>
 </div>
 {% endblock %}

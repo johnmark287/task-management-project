@@ -6,8 +6,8 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<p>Welcome - {{ user }}</p>
-<p>Would you like to view <a href="{% url 'tasks:create-task' %}">Create a New Task?</a></p>
+<p>Welcome - <span class="font-medium">{{ user }}</span></p>
+<p>Would you like to view <button><a href="{% url 'tasks:list-tasks' %}" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-[4px] px-4 rounded-md transition-colors duration-300 mt-4">Your Tasks?</a></button></p>
 {% else %}
 <p>Welcome - {{ user }}</p>
 <p>Please <a href="{% url 'users:login' %}">Login</a></p>

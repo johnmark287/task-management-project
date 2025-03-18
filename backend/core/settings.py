@@ -34,9 +34,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     
-#    "crispy_forms",
-#    "crispy_tailwind",
+    "crispy_forms",
+    "crispy_tailwind",
     "tailwind",
+    
     "theme",
     "django_browser_reload",
 
@@ -67,7 +68,7 @@ ROOT_URLCONF = "core.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "tasks" / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -153,3 +154,5 @@ EMAIL_HOST_PASSWORD = 'Scm211-0735/2022'
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/users/login/"
+
+CRISPY_TEMPLATE_PACK = "tailwind"
