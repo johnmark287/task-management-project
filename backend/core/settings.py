@@ -40,9 +40,14 @@ INSTALLED_APPS = [
     
     "theme",
     "django_browser_reload",
+    "corsheaders",
+    
+    "rest_framework",
+    "debug_toolbar",
 
     "users",
     "tasks",
+    "api",
 ]
 
 TAILWIND_APP_NAME = 'theme'
@@ -50,7 +55,9 @@ TAILWIND_APP_NAME = 'theme'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
 NPM_BIN_PATH="/data/data/com.termux/files/usr/bin/npm"
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -61,6 +68,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -156,3 +165,9 @@ LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/users/login/"
 
 CRISPY_TEMPLATE_PACK = "tailwind"
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+
+
