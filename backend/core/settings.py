@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "theme",
     "django_browser_reload",
     "corsheaders",
+    "django_filters",
     
     "rest_framework",
     "debug_toolbar",
@@ -157,9 +158,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'johnmark.muhando@students.jkuat.ac.ke'
-EMAIL_HOST_PASSWORD = 'Scm211-0735/2022'
-#DEFAULT_FROM_EMAIL = 'johnmarkmuhando23@gmail.com'
+EMAIL_HOST_USER = 'quandawg287@gmail.com'
+EMAIL_HOST_PASSWORD = 'mswb zmtz svkk gkkp'
+DEFAULT_FROM_EMAIL = 'quandawg287@gmail.com'
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/users/login/"

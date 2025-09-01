@@ -5,6 +5,7 @@ from . import forms
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 User = get_user_model()
 
@@ -43,3 +44,7 @@ def list_users(request):
     users = User.objects.all()
     return render(request, "registration/list_users.html", { "users": users })
 
+@login_required(login_url="users/login")
+def profile(request):
+  print("hello")
+  return render(request, {})

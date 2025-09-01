@@ -1,5 +1,5 @@
 # tasks/views.py
-#from rest_framework import viewsets
+from rest_framework import viewsets
 #from rest_framework.permissions import IsAuthenticated
 from .models import Task
 from .serializers import TaskSerializer
@@ -9,19 +9,11 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.contrib import messages
 
-# class TaskViewSet(viewsets.ModelViewSet):
-#    serializer_class = TaskSerializer
-#    permission_classes = [IsAuthenticated]
-#
-#    def get_queryset(self):
-#        return Task.objects.filter(user=self.request.user)
-#
-#    def perform_create(self, serializer):
-#        serializer.save(user=self.request.user)
-
+@login_required(login_url="users/login/")
 def index(request):
+  user_id = request.user.id
   tasks = get_list_or_404(Task, user=request.user)
-  return render(request, 'tasks/index.html', { "tasks": tasks })
+  return render(request, 'tasks/index.html', { "tasks": tasks, "user_id": user_id })
 
 @login_required(login_url="/users/login/")
 def create_task(request):
