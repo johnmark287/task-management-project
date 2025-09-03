@@ -1,4 +1,4 @@
-{% load static tailwind_tags %}
+{% load static tailwind_filters %}
 
 <html lang="en">
 <head>
@@ -15,7 +15,7 @@
         <a href="{% url 'users:logout' %}" class="font-medium">Logout</a>
       </button>
 {% endif %}
-  {% tailwind_css %}
+    {% load tailwind_tags %}
   {% block content %}{% endblock %}
 </body>
 </html>
