@@ -1,14 +1,14 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
 from tasks.serializers import TaskSerializer
 from rest_framework.permissions import IsAuthenticated
 from tasks.models import Task
-
+from django_filters.rest_framework import DjangoFilterBackend
 
 class TaskViewSet(viewsets.ModelViewSet):
    serializer_class = TaskSerializer
    permission_classes = [IsAuthenticated]
-   filter_backends = [DjangoFilterBacked, filters.SearchFilter, filters.OrderingFilter]
-   filterset_fields = ['completed', 'due_date', 'status', 'priority']
+   filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+   filterset_fields = ['due_date', 'status', 'priority']
    search_fields = ['title', 'description']
    ordering_fields = ['due_date', 'priority', 'created_at']
    ordering = ['due_date']

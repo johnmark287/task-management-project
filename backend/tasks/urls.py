@@ -6,7 +6,7 @@ from tasks.viewsets import TaskViewSet
 app_name = "tasks"
 
 router = routers.DefaultRouter()
-router.register(r'tasks', TaskViewSet, basename='task')
+router.register(r'tasksss', TaskViewSet, basename='task')
 
 urlpatterns = [
     path("", views.index, name="index"),

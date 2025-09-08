@@ -30,8 +30,16 @@ def create_task(request):
 
 @login_required(login_url="/users/login/")
 def list_tasks(request):
-     tasks = get_list_or_404(Task, user=request.user)
-     return render(request, "tasks/list_tasks.html", { "tasks": tasks })
+    tasks = get_list_or_404(Task, user=request.user)
+     
+    status = request.GET.get('status')
+    search = request.GET.get('search')
+     
+    if status:
+      tasks = products.filter(status=status)
+    if search:
+      tasks = products.filter(name__icontains=search)
+    return render(request, "tasks/list_tasks.html", { "tasks": tasks })
 @login_required(login_url="/users/login")
 def task_detail(request, pk):
   task = Task.objects.get(pk=pk)

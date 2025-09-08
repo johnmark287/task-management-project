@@ -4,9 +4,18 @@
 {% block content %}
 
 <div class="my-[5px] bg-red">
+  <!-- filter_form.html -->
+<form method="GET">
+    <select name="status">
+        <option value="">All Categories</option>
+        <option value="Completed">Completed Tasks</option>
+    </select>
+    <input type="text" name="search" placeholder="Search products">
+    <button type="submit">Filter</button>
+</form>
 {% for task in tasks %}
 	<div class="flex justify-between items-center">
-	  <div><a href="{% url 'tasks:task-detail' task.pk %}" >{{ task.title }}</a>
+	 <div><a href="{% url 'tasks:task-detail' task.pk %}" >{{ task.title }}</a>
 	  </div>
 	  <div class="flex gap-2">
 	  <button type="submit" class="w-full bg-red-500 hover:bg-blue-600 text-white font-medium py-[1px] px-4 rounded-md transition-colors duration-300 mt-4">
