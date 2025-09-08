@@ -15,6 +15,10 @@ class UserViewSet(viewsets.ModelViewSet):
   serializer_class = serializers.UserSerializer
   queryset = User.objects.all()
   permission_classes = [permissions.IsAuthenticated]
+  filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+  search_fields = ['username', 'email']
+  ordering_fields = ['username', 'date_joined']
+  ordering = ['username'] 
 
 class TaskViewSet(viewsets.ModelViewSet):
   queryset = Task.objects.all()

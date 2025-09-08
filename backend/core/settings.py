@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     
     "crispy_forms",
+    # "crispy_bootstrap5",
     "crispy_tailwind",
     "tailwind",
     
@@ -50,6 +51,8 @@ INSTALLED_APPS = [
     "tasks",
     "api",
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
 TAILWIND_APP_NAME = 'theme'
 
