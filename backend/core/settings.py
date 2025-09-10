@@ -52,6 +52,10 @@ INSTALLED_APPS = [
     "api",
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+}
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
 TAILWIND_APP_NAME = 'theme'
