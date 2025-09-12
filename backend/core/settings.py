@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "drf_spectacular",
 
-    'drf_spectacular',
     # 'drf_spectacular_sidecar',
     "users",
     "tasks",

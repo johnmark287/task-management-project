@@ -2,7 +2,7 @@
 from rest_framework import viewsets
 #from rest_framework.permissions import IsAuthenticated
 from .models import Task
-from .serializers import TaskSerializer
+# from .serializers import TaskSerializer
 from .forms import TaskForm
 from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from django.contrib.auth.decorators import login_required
