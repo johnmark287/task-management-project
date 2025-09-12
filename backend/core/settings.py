@@ -48,11 +48,18 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "drf_spectacular",
 
+    'drf_spectacular',
+    # 'drf_spectacular_sidecar',
     "users",
     "tasks",
     "api",
 ]
 
+SPECTACULAR_SETTINGS = {
+    'SWAGGER_UI_DIST': 'SIDECAR',  # shorthand to use the sidecar instead
+    'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
+    'REDOC_DIST': 'SIDECAR',
+}
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
