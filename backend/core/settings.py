@@ -66,7 +66,7 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-  'TITLE': 'Task Management Project API.',
+  'TITLE': 'Task Management Project API Docs.',
   'DESCRIPTION': 'How to use this API.',
   'VERSION': '1.0.0',
   'SERVE_INCLUDE_SCHEMA': False,
